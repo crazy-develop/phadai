@@ -46,6 +46,7 @@
       flex-wrap: wrap;
       gap: 1rem;
       margin-bottom: 2rem;
+      justify-content: center;
     }
     .btn-group button {
       padding: 1rem 2rem;
@@ -57,6 +58,11 @@
       border-radius: 8px;
       cursor: pointer;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+    .btn-group button:hover {
+      background-color: #00e5ff;
+      color: #000;
     }
     .year-section {
       display: none;
@@ -95,6 +101,7 @@
       padding: 0.4rem 0.8rem;
       background: rgba(0,188,212,0.15);
       border-radius: 6px;
+      cursor: pointer;
     }
     footer {
       text-align: center;
@@ -106,6 +113,15 @@
     @media (max-width: 768px) {
       header h1 {
         font-size: 1.8rem;
+      }
+      .btn-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      .subject-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
       }
     }
   </style>
@@ -126,85 +142,7 @@
       <button onclick="showYear('year4')">Final Year</button>
     </div>
 
-    <div class="year-section active" id="year1">
-      <h3>1st Year</h3>
-      <div class="subject-item">
-        <span>Mathematics-I</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/math-2.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>Physics</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/Physics.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>Basic Electrical</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/ELECTRICAL.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>Chemistry</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/chemistry.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>Soft Skills</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/SOFT%20SKILLS.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>EVS</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/EVS.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>PPS</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/PPS.pdf" target="_blank">View PDF</a>
-      </div>
-    </div>
-
-    <div class="year-section" id="year2">
-      <h3>2nd Year</h3>
-      <div class="subject-item">
-        <span>Data Structures</span>
-        <a href="https://example.com/CSE_2nd_DS.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>OOPs</span>
-        <a href="https://example.com/CSE_2nd_OOP.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>Digital Logic</span>
-        <a href="https://example.com/CSE_2nd_DL.pdf" target="_blank">View PDF</a>
-      </div>
-    </div>
-
-    <div class="year-section" id="year3">
-      <h3>3rd Year</h3>
-      <div class="subject-item">
-        <span>Operating Systems</span>
-        <a href="https://example.com/CSE_3rd_OS.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>DBMS</span>
-        <a href="https://example.com/CSE_3rd_DBMS.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>Computer Networks</span>
-        <a href="https://example.com/CSE_3rd_CN.pdf" target="_blank">View PDF</a>
-      </div>
-    </div>
-
-    <div class="year-section" id="year4">
-      <h3>Final Year</h3>
-      <div class="subject-item">
-        <span>Artificial Intelligence</span>
-        <a href="https://example.com/CSE_Final_AI.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>Cloud Computing</span>
-        <a href="https://example.com/CSE_Final_Cloud.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>Compiler Design</span>
-        <a href="https://example.com/CSE_Final_Compiler.pdf" target="_blank">View PDF</a>
-      </div>
-    </div>
+    <div id="yearContainer"></div>
   </div>
 
   <footer>
@@ -212,11 +150,73 @@
   </footer>
 
   <script>
-    function showYear(yearId) {
-      document.querySelectorAll('.year-section').forEach(section => {
-        section.classList.remove('active');
+    const yearData = {
+      year1: [
+        { name: 'Mathematics-I', file: 'math-2.pdf' },
+        { name: 'Physics', file: 'Physics.pdf' },
+        { name: 'Basic Electrical', file: 'ELECTRICAL.pdf' },
+        { name: 'Chemistry', file: 'chemistry.pdf' },
+        { name: 'Soft Skills', file: 'SOFT SKILLS.pdf' },
+        { name: 'EVS', file: 'EVS.pdf' },
+        { name: 'PPS', file: 'PPS.pdf' }
+      ],
+      year2: [
+        { name: 'Data Structures', file: 'CSE_2nd_DS.pdf', external: true },
+        { name: 'OOPs', file: 'CSE_2nd_OOP.pdf', external: true },
+        { name: 'Digital Logic', file: 'CSE_2nd_DL.pdf', external: true }
+      ],
+      year3: [
+        { name: 'Operating Systems', file: 'CSE_3rd_OS.pdf', external: true },
+        { name: 'DBMS', file: 'CSE_3rd_DBMS.pdf', external: true },
+        { name: 'Computer Networks', file: 'CSE_3rd_CN.pdf', external: true }
+      ],
+      year4: [
+        { name: 'Artificial Intelligence', file: 'CSE_Final_AI.pdf', external: true },
+        { name: 'Cloud Computing', file: 'CSE_Final_Cloud.pdf', external: true },
+        { name: 'Compiler Design', file: 'CSE_Final_Compiler.pdf', external: true }
+      ]
+    };
+
+    function showYear(yearKey) {
+      const container = document.getElementById('yearContainer');
+      container.innerHTML = '';
+      const section = document.createElement('div');
+      section.classList.add('year-section', 'active');
+
+      const heading = document.createElement('h3');
+      heading.textContent = yearKey.replace('year', '') + ' Year';
+      section.appendChild(heading);
+
+      yearData[yearKey].forEach(subject => {
+        const item = document.createElement('div');
+        item.className = 'subject-item';
+        const span = document.createElement('span');
+        span.textContent = subject.name;
+
+        const link = document.createElement('a');
+        link.textContent = 'View PDF';
+        link.href = '#';
+        link.onclick = () => {
+          const choice = prompt("Where do you want to open the file? (1. New Tab / 2. Download)");
+          if (choice === '1') {
+            window.open(subject.external ? `https://example.com/${subject.file}` : `https://crazy-develop.github.io/phadai/${subject.file}`, '_blank');
+          } else if (choice === '2') {
+            const a = document.createElement('a');
+            a.href = subject.external ? `https://example.com/${subject.file}` : `https://crazy-develop.github.io/phadai/${subject.file}`;
+            a.download = subject.name;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          }
+          return false;
+        };
+
+        item.appendChild(span);
+        item.appendChild(link);
+        section.appendChild(item);
       });
-      document.getElementById(yearId).classList.add('active');
+
+      container.appendChild(section);
     }
   </script>
 </body>
