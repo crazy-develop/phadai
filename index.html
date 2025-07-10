@@ -1,145 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Padhai - Previous Year Papers</title>
-  <meta name="description" content="Access previous year papers for engineering subjects like PPS, Maths, Physics, and more." />
-  <meta name="author" content="Whatin.in" />
-  <link rel="icon" href="favicon.ico" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WHATIN - CSE Previous Year Papers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
     }
-
-    header {
-      background-color: #0059b3;
+    body {
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
       color: white;
-      padding: 1rem;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 2rem;
       text-align: center;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-bottom: 2px solid #00bcd4;
     }
-
-    main {
-      padding: 2rem 1rem;
-      max-width: 900px;
-      margin: auto;
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
     }
-
-    h2 {
+    .section {
+      padding: 2rem;
+    }
+    .section p.intro {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: #e0e0e0;
+    }
+    .branch-heading {
+      font-size: 1.6rem;
+      font-weight: bold;
       margin-bottom: 1rem;
-      color: #222;
-      text-align: center;
+      color: #00e5ff;
     }
-
-    .pdf-list {
+    .btn-group {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       gap: 1rem;
+      margin-bottom: 2rem;
     }
-
-    .pdf-item {
+    .btn-group button {
+      padding: 1rem 2rem;
+      border: none;
+      background-color: #ffffff;
+      color: #1f1c2c;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .year-section {
+      display: none;
+      margin-bottom: 2rem;
       background: white;
-      border-left: 5px solid #0059b3;
-      border-radius: 6px;
+      color: black;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .year-section.active {
+      display: block;
+    }
+    .year-section h3 {
+      color: #ff9800;
+      margin-bottom: 1.5rem;
+      font-size: 1.6rem;
+    }
+    .subject-item {
+      background: #f9f9f9;
+      color: black;
       padding: 1rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      margin: 0.5rem 0;
+      border-radius: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      font-size: 1.05rem;
     }
-
-    .pdf-item strong {
-      font-size: 1rem;
-      color: #333;
-      flex: 1 1 auto;
+    .subject-item span {
+      flex: 1;
     }
-
-    .pdf-item a {
-      background-color: #0059b3;
-      color: white;
-      padding: 0.5rem 1rem;
+    .subject-item a {
+      color: #00bcd4;
       text-decoration: none;
-      border-radius: 4px;
+      padding: 0.4rem 0.8rem;
+      background: rgba(0,188,212,0.15);
+      border-radius: 6px;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
       font-size: 0.9rem;
-      transition: background-color 0.3s ease;
+      background-color: rgba(255,255,255,0.05);
+      margin-top: 3rem;
     }
-
-    .pdf-item a:hover {
-      background-color: #004080;
-    }
-
-    @media (max-width: 600px) {
-      .pdf-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Padhai: Previous Year Papers</h1>
+    <h1>WHATIN - CSE Previous Year Papers</h1>
   </header>
-  <main>
-    <h2>Available Subjects</h2>
-    <section class="pdf-list">
 
-      <div class="pdf-item">
-        <strong>Mathematics - 2</strong>
-        <a href="math-2.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+  <div class="section">
+    <p class="intro">Welcome to the official CSE Previous Year Paper archive for AKTU. Click on the respective year to view subject-wise downloadable PDFs.</p>
+    <div class="branch-heading">Branch: Computer Science & Engineering (CSE)</div>
+
+    <div class="btn-group">
+      <button onclick="showYear('year1')">1st Year</button>
+      <button onclick="showYear('year2')">2nd Year</button>
+      <button onclick="showYear('year3')">3rd Year</button>
+      <button onclick="showYear('year4')">Final Year</button>
+    </div>
+
+    <div class="year-section active" id="year1">
+      <h3>1st Year</h3>
+      <div class="subject-item">
+        <span>Mathematics-I</span>
+        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/math-2.pdf" target="_blank">View PDF</a>
       </div>
-
-      <div class="pdf-item">
-        <strong>Physics</strong>
-        <a href="physics.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+      <div class="subject-item">
+        <span>Physics</span>
+        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/Physics.pdf" target="_blank">View PDF</a>
       </div>
-
-      <div class="pdf-item">
-        <strong>Chemistry</strong>
-        <a href="chemistry.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+      <div class="subject-item">
+        <span>Basic Electrical</span>
+        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/ELECTRICAL.pdf" target="_blank">View PDF</a>
       </div>
-
-      <div class="pdf-item">
-        <strong>Electronics</strong>
-        <a href="electronics.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+      <div class="subject-item">
+        <span>Chemistry</span>
+        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/chemistry.pdf" target="_blank">View PDF</a>
       </div>
-
-      <div class="pdf-item">
-        <strong>PPS</strong>
-        <a href="PPS.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+      <div class="subject-item">
+        <span>Soft Skills</span>
+        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/SOFT%20SKILLS.pdf" target="_blank">View PDF</a>
       </div>
-
-      <div class="pdf-item">
-        <strong>Mechanical</strong>
-        <a href="MECHANICAL.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+      <div class="subject-item">
+        <span>EVS</span>
+        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/EVS.pdf" target="_blank">View PDF</a>
       </div>
-
-      <div class="pdf-item">
-        <strong>Electrical</strong>
-        <a href="ELECTRICAL.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+      <div class="subject-item">
+        <span>PPS</span>
+        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/PPS.pdf" target="_blank">View PDF</a>
       </div>
+    </div>
 
-      <div class="pdf-item">
-        <strong>EVS</strong>
-        <a href="EVS.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+    <div class="year-section" id="year2">
+      <h3>2nd Year</h3>
+      <div class="subject-item">
+        <span>Data Structures</span>
+        <a href="https://example.com/CSE_2nd_DS.pdf" target="_blank">View PDF</a>
       </div>
-
-      <div class="pdf-item">
-        <strong>Soft Skills</strong>
-        <a href="SOFT%20SKILLS.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+      <div class="subject-item">
+        <span>OOPs</span>
+        <a href="https://example.com/CSE_2nd_OOP.pdf" target="_blank">View PDF</a>
       </div>
+      <div class="subject-item">
+        <span>Digital Logic</span>
+        <a href="https://example.com/CSE_2nd_DL.pdf" target="_blank">View PDF</a>
+      </div>
+    </div>
 
-    </section>
-  </main>
+    <div class="year-section" id="year3">
+      <h3>3rd Year</h3>
+      <div class="subject-item">
+        <span>Operating Systems</span>
+        <a href="https://example.com/CSE_3rd_OS.pdf" target="_blank">View PDF</a>
+      </div>
+      <div class="subject-item">
+        <span>DBMS</span>
+        <a href="https://example.com/CSE_3rd_DBMS.pdf" target="_blank">View PDF</a>
+      </div>
+      <div class="subject-item">
+        <span>Computer Networks</span>
+        <a href="https://example.com/CSE_3rd_CN.pdf" target="_blank">View PDF</a>
+      </div>
+    </div>
+
+    <div class="year-section" id="year4">
+      <h3>Final Year</h3>
+      <div class="subject-item">
+        <span>Artificial Intelligence</span>
+        <a href="https://example.com/CSE_Final_AI.pdf" target="_blank">View PDF</a>
+      </div>
+      <div class="subject-item">
+        <span>Cloud Computing</span>
+        <a href="https://example.com/CSE_Final_Cloud.pdf" target="_blank">View PDF</a>
+      </div>
+      <div class="subject-item">
+        <span>Compiler Design</span>
+        <a href="https://example.com/CSE_Final_Compiler.pdf" target="_blank">View PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 WHATIN. All rights reserved. Powered by students, for students.</p>
+  </footer>
+
+  <script>
+    function showYear(yearId) {
+      document.querySelectorAll('.year-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(yearId).classList.add('active');
+    }
+  </script>
 </body>
 </html>
