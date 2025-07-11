@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WHATIN - AKTU Previous Year Papers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
     * {
       margin: 0;
@@ -12,104 +12,127 @@
       box-sizing: border-box;
       font-family: 'Outfit', sans-serif;
     }
+
     body {
       background: linear-gradient(135deg, #1f1c2c, #928dab);
       color: white;
-      overflow-x: hidden;
     }
+
     header {
       padding: 2rem;
       text-align: center;
-      background-color: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.3);
       border-bottom: 2px solid #00bcd4;
     }
+
     header h1 {
       font-size: 2.5rem;
       font-weight: 700;
     }
-    .section {
+
+    main {
       padding: 2rem;
     }
-    .section p.intro {
+
+    .intro {
       margin-bottom: 1.5rem;
       font-size: 1.1rem;
       color: #e0e0e0;
     }
+
     .branch-heading {
       font-size: 1.6rem;
       font-weight: bold;
       margin-bottom: 1rem;
       color: #00e5ff;
     }
+
     .btn-group {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       margin-bottom: 2rem;
     }
+
     .btn-group button {
       padding: 1rem 2rem;
-      border: none;
-      background-color: #ffffff;
+      background: #fff;
       color: #1f1c2c;
       font-weight: bold;
       font-size: 1.1rem;
       border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border: none;
+      transition: background 0.2s;
     }
+
+    .btn-group button:hover {
+      background: #e0e0e0;
+    }
+
     .year-section {
       display: none;
-      margin-bottom: 2rem;
-      background: white;
-      color: black;
-      border-radius: 12px;
       padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      margin-bottom: 2rem;
     }
+
     .year-section.active {
       display: block;
     }
+
     .year-section h3 {
       color: #ff9800;
       margin-bottom: 1.5rem;
       font-size: 1.6rem;
     }
+
     .subject-item {
-      background: #f9f9f9;
-      color: black;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      color: #ffffff;
       padding: 1rem;
-      margin: 0.5rem 0;
-      border-radius: 8px;
+      margin: 0.75rem 0;
+      border-radius: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 1.05rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease, background 0.3s ease;
     }
-    .subject-item span {
-      flex: 1;
+
+    .subject-item:hover {
+      transform: scale(1.02);
+      background: rgba(255, 255, 255, 0.15);
     }
+
     .subject-item a {
-      color: #00bcd4;
+      color: #00e5ff;
       text-decoration: none;
       padding: 0.4rem 0.8rem;
-      background: rgba(0,188,212,0.15);
+      background: rgba(0, 229, 255, 0.15);
       border-radius: 6px;
+      transition: background 0.2s;
     }
+
+    .subject-item a:hover {
+      background: rgba(0, 229, 255, 0.3);
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
-      background-color: rgba(255,255,255,0.05);
-      margin-top: 3rem;
+      background-color: rgba(255, 255, 255, 0.05);
     }
+
     @media (max-width: 768px) {
       header h1 {
         font-size: 1.8rem;
       }
       .btn-group {
         flex-direction: column;
-        align-items: stretch;
       }
     }
   </style>
@@ -119,78 +142,55 @@
     <h1>WHATIN - AKTU Previous Year Papers</h1>
   </header>
 
-  <div class="section">
+  <main>
     <p class="intro">Welcome to the official CSE Previous Year Paper archive for AKTU. Click on the respective year to view subject-wise downloadable PDFs.</p>
     <div class="branch-heading">Branch: Computer Science & Engineering (CSE)</div>
 
     <div class="btn-group">
-      <button onclick="showYear('year1')">1st Year</button>
-      <button onclick="showYear('year2')">2nd Year</button>
-      <button onclick="showYear('year3')">3rd Year</button>
-      <button onclick="showYear('year4')">Final Year</button>
+      <button data-target="year1">1st Year</button>
+      <button data-target="year2">2nd Year</button>
+      <button data-target="year3">3rd Year</button>
+      <button data-target="year4">Final Year</button>
     </div>
 
-    <div class="year-section" id="year1">
+    <!-- YEAR 1 SECTION -->
+    <section class="year-section" id="year1">
       <h3>1st Year</h3>
-      <div class="subject-item">
-        <span>Mathematics-2</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/math-2.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>Physics</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/Physics.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>Basic Electrical</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/ELECTRICAL.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>Chemistry</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/chemistry.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>Soft Skills</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/SOFT%20SKILLS.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>EVS</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/EVS.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>PPS</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/PPS.pdf" target="_blank">View PDF</a>
-      </div>
-      <div class="subject-item">
-        <span>MECHANICAL</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/MECHANICAL.pdf" target="_blank">View PDF</a>
-      </div>
-       <div class="subject-item">
-        <span>Electronic</span>
-        <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/electronics.pdf" target="_blank">View PDF</a>
-      </div>
-    </div>
+      <div class="subject-item"><span>Mathematics-2</span><a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/math-2.pdf" target="_blank">View PDF</a></div>
+      <div class="subject-item"><span>Physics</span><a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/Physics.pdf" target="_blank">View PDF</a></div>
+      <div class="subject-item"><span>Basic Electrical</span><a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/ELECTRICAL.pdf" target="_blank">View PDF</a></div>
+      <div class="subject-item"><span>Chemistry</span><a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/chemistry.pdf" target="_blank">View PDF</a></div>
+      <div class="subject-item"><span>Soft Skills</span><a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/SOFT%20SKILLS.pdf" target="_blank">View PDF</a></div>
+      <div class="subject-item"><span>EVS</span><a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/EVS.pdf" target="_blank">View PDF</a></div>
+      <div class="subject-item"><span>PPS</span><a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/PPS.pdf" target="_blank">View PDF</a></div>
+      <div class="subject-item"><span>MECHANICAL</span><a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/MECHANICAL.pdf" target="_blank">View PDF</a></div>
+      <div class="subject-item"><span>Electronic</span><a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/electronics.pdf" target="_blank">View PDF</a></div>
+    </section>
 
-    <div class="year-section" id="year2"></div>
-   
-    <div class="year-section" id="year3"></div>
-    <div class="year-section" id="year4"></div>
-      <h2>WHATIN - AKTU Previous Year Papers</h2>
-  </div>
+    <!-- Other year sections (optional to fill later) -->
+    <section class="year-section" id="year2"><h3>2nd Year</h3></section>
+    <section class="year-section" id="year3"><h3>3rd Year</h3></section>
+    <section class="year-section" id="year4"><h3>Final Year</h3></section>
+  </main>
 
   <footer>
     <p>&copy; 2025 WHATIN. All rights reserved. Powered by students, for students.</p>
   </footer>
 
   <script>
-    function showYear(yearId) {
-      document.querySelectorAll('.year-section').forEach(section => {
-        section.style.display = 'none';
-      });
-      document.getElementById(yearId).style.display = 'block';
-    }
+    const buttons = document.querySelectorAll(".btn-group button");
+    const yearSections = document.querySelectorAll(".year-section");
 
-    // Show first year by default
-    showYear('year1');
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        yearSections.forEach(section => section.classList.remove("active"));
+        const target = btn.getAttribute("data-target");
+        document.getElementById(target).classList.add("active");
+      });
+    });
+
+    // Default: Show 1st year
+    document.getElementById("year1").classList.add("active");
   </script>
 </body>
 </html>
