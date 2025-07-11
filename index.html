@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WHATIN - AKTU Previous Year Papers</title>
-  
-  <!-- Fonts -->
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Pacifico&display=swap" rel="stylesheet"/>
 
   <style>
@@ -130,17 +130,19 @@
       background-color: rgba(255, 255, 255, 0.05);
     }
 
-    /* Signature styling */
-    .signature {
+    /* 👇 FIXED NAME IN CORNER */
+    .fixed-name {
       position: fixed;
       bottom: 10px;
-      right: 15px;
+      left: 15px;
       font-family: 'Pacifico', cursive;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #00e5ff;
-      opacity: 0.85;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-      z-index: 1000;
+      opacity: 0.9;
+      z-index: 9999;
+      pointer-events: none;
+      user-select: none;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
     }
 
     @media (max-width: 768px) {
@@ -149,6 +151,9 @@
       }
       .btn-group {
         flex-direction: column;
+      }
+      .fixed-name {
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -183,18 +188,18 @@
       <div class="subject-item"><span>Electronic</span><a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/electronics.pdf" target="_blank">View PDF</a></div>
     </section>
 
-    <!-- Future Year Sections -->
+    <!-- Future Sections -->
     <section class="year-section" id="year2"><h3>2nd Year</h3></section>
     <section class="year-section" id="year3"><h3>3rd Year</h3></section>
     <section class="year-section" id="year4"><h3>Final Year</h3></section>
   </main>
 
   <footer>
-    <p>&copy; 2025 WHATIN. All rights reserved. Powered by students, for students.</p>
-  </footer>
+  <p>&copy; 2025 WHATIN. All rights reserved. Powered by students, for students.<br>
+     <span style="font-size: 0.85rem; color: #00e5ff;">Designed & Crafted by Dushyant Saini</span>
+  </p>
+</footer>
 
-  <!-- Your Signature -->
-  <div class="signature">© Dushyant Saini</div>
 
   <script>
     const buttons = document.querySelectorAll(".btn-group button");
@@ -208,7 +213,7 @@
       });
     });
 
-    // Default: Show 1st year
+    // Default visible: 1st year
     document.getElementById("year1").classList.add("active");
   </script>
 </body>
