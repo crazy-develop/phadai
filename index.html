@@ -22,7 +22,7 @@
     }
 
     header {
-      padding: 2rem;
+      padding: 2rem 2rem 1rem;
       text-align: center;
       background: rgba(0, 0, 0, 0.3);
       border-bottom: 2px solid #00bcd4;
@@ -33,7 +33,28 @@
       font-weight: 700;
     }
 
-    main {
+    nav {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    nav button {
+      background: #00e5ff;
+      border: none;
+      color: #1f1c2c;
+      font-weight: bold;
+      padding: 0.6rem 1.2rem;
+      margin: 0 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    nav button:hover {
+      background: #00c2d3;
+    }
+
+    main, .about-section {
       padding: 2rem;
     }
 
@@ -123,6 +144,26 @@
       background: rgba(0, 229, 255, 0.3);
     }
 
+    .about-section {
+      display: none;
+    }
+
+    .about-section.active {
+      display: block;
+    }
+
+    .about-section h2 {
+      font-size: 2rem;
+      color: #00e5ff;
+      margin-bottom: 1rem;
+    }
+
+    .about-section p {
+      font-size: 1.1rem;
+      color: #e0e0e0;
+      margin-bottom: 1rem;
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
@@ -130,7 +171,6 @@
       background-color: rgba(255, 255, 255, 0.05);
     }
 
-    /* 👇 FIXED NAME IN CORNER */
     .fixed-name {
       position: fixed;
       bottom: 10px;
@@ -161,9 +201,13 @@
 <body>
   <header>
     <h1>WHATIN - AKTU Previous Year Papers</h1>
+    <nav>
+      <button onclick="showHome()">Home</button>
+      <button onclick="showAbout()">About</button>
+    </nav>
   </header>
 
-  <main>
+  <main id="main-content">
     <p class="intro">Welcome to the official CSE Previous Year Paper archive for AKTU. Click on the respective year to view subject-wise downloadable PDFs.</p>
     <div class="branch-heading">Branch: Computer Science & Engineering (CSE)</div>
 
@@ -194,12 +238,18 @@
     <section class="year-section" id="year4"><h3>Final Year</h3></section>
   </main>
 
-  <footer>
-  <p>&copy; 2025 WHATIN. All rights reserved. Powered by students, for students.<br>
-     <span style="font-size: 0.85rem; color: #00e5ff;">Designed & Crafted by Dushyant Saini</span>
-  </p>
-</footer>
+  <section class="about-section" id="about">
+    <h2>About WHATIN</h2>
+    <p>WHATIN stands for "We Hack Amazing Tech Ideas for Nextgen". It's a student-driven initiative to build and provide smart platforms that solve real academic problems for AKTU students and beyond.</p>
+    <p>All the papers, resources and tools provided here are free to access and curated with love by students, for students.</p>
+    <p><strong>Founder:</strong> Dushyant Saini</p>
+  </section>
 
+  <footer>
+    <p>&copy; 2025 WHATIN. All rights reserved. Powered by students, for students.<br>
+    <span style="font-size: 0.85rem; color: #00e5ff;">Designed & Crafted by Dushyant Saini</span>
+    </p>
+  </footer>
 
   <script>
     const buttons = document.querySelectorAll(".btn-group button");
@@ -212,6 +262,16 @@
         document.getElementById(target).classList.add("active");
       });
     });
+
+    function showHome() {
+      document.getElementById("main-content").style.display = "block";
+      document.getElementById("about").classList.remove("active");
+    }
+
+    function showAbout() {
+      document.getElementById("main-content").style.display = "none";
+      document.getElementById("about").classList.add("active");
+    }
 
     // Default visible: 1st year
     document.getElementById("year1").classList.add("active");
